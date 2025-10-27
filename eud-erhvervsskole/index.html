@@ -117,9 +117,7 @@
                                 <div class="flex flex-col space-y-2">
                                     <div class="flex max-w-xs items-center py-4 space-x-2 sm:space-x-6 sm:max-w-lg">
                                         <a
-                                            href="#"
-                                            @click.prevent="nav = ! nav ; modal = ! modal"
-                                            rel="nofollow"
+                                            href="https://juuldanmark.dk/erhvervsskole/hoer-mere"
                                             class="rounded-md bg-lime-600 px-8 font-medium text-white py-1.5 sm:tracking-wider hover:bg-lime-500 active:bg-lime-600 focus:outline-none focus:ring focus:ring-lime-600/50"
                                         >Hør mere</a>
                                     </div>
@@ -192,9 +190,7 @@
                         </h2>
                     </div>
                     <a
-                        href="#"
-                        @click.prevent="modal = ! modal"
-                        rel="nofollow"
+                        href="https://juuldanmark.dk/erhvervsskole/hoer-mere"
                         class="mx-auto my-2 whitespace-nowrap rounded-md bg-lime-600 px-10 py-2 text-base font-medium tracking-wide text-white shadow-sm transition-colors duration-100 hover:bg-lime-500 focus:outline-none focus:ring focus:ring-lime-600/50 active:bg-lime-600 md:text-md"
                     >Hør mere</a>
                 </div>
@@ -359,144 +355,6 @@
         </div>
     </div>
 </footer>
-<div class="flex justify-center">
-    <div
-        x-show="modal"
-        x-on:keydown.escape.prevent.stop="modal = false"
-        role="dialog"
-        aria-modal="true"
-        x-id="['modal-title']"
-        :aria-labelledby="$id('modal-title')"
-        class="fixed inset-0 z-20 overflow-y-auto"
-        x-cloak
-    >
-        <!-- Overlay -->
-        <div x-show="modal" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50"></div>
-
-        <!-- Panel -->
-        <div
-            x-show="modal" x-transition
-            class="relative flex min-h-screen items-center justify-center p-4"
-        >
-            <div
-                x-on:click.stop
-                x-trap.noscroll.inert="modal"
-                class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-12 shadow-lg"
-            >
-                <div class="absolute top-6 right-0">
-                    <button x-on:click="modal = false" type="button" class="group relative z-10 -m-2 mr-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 p-2 ui-not-focus-visible:outline-none hover:bg-gray-200 md:mr-4" aria-label="Luk tilmelding">
-                        <svg aria-hidden="true" class="overflow-visible stroke-neutral-500 group-active:stroke-black h-3.5 w-3.5" fill="none" stroke-width="2" stroke-linecap="round">
-                            <path d="M2 2L12 12M12 2L2 12"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Title -->
-                <h3 class="text-3xl font-bold" :id="$id('modal-title')">Hør mere om JUUL Erhvervsuddannelser</h3>
-
-                <!-- Content -->
-                <p class="mt-2 text-gray-600">Udfyld dine kontaktoplysninger og så vil vi kontakte dig.</p>
-
-                <!-- Form -->
-                <div class="relative">
-                    <div class="absolute inset-0">
-                        <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50"></div>
-                    </div>
-                    <div class="relative mx-auto max-w-6xl">
-                        <div class="bg-white py-10 lg:col-span-3 lg:px-2 lg:py-16">
-                            <div class="mx-auto max-w-lg rounded-lg bg-gray-50 p-6 lg:max-w-none">
-                                <form x-data="form()" @submit.prevent="submit()" class="grid grid-cols-1 gap-y-6">
-                                    <input type="text" name="honeypot" class="hidden" x-cloak>
-                                    <input type="hidden" name="subject" value="Generel henvendelse til JUUL Erhvervsskole" x-model="data.subject" />
-                                    <input type="hidden" name="replyTo" value="@">
-                                    <div>
-                                        <label for="full-name" class="sr-only">Navn</label>
-                                        <input type="text" name="name" id="full-name" autocomplete="name" class="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm placeholder-gray-500 focus:border-sky-400 focus:ring-sky-400 disabled:bg-gray-200" placeholder="Dit fulde navn" required x-model="data.name" :disabled="success">
-                                    </div>
-                                    <div>
-                                        <label for="email" class="sr-only">Email</label>
-                                        <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm placeholder-gray-500 focus:border-sky-400 focus:ring-sky-400 disabled:bg-gray-200" placeholder="Email" required x-model="data.email" :disabled="success">
-                                    </div>
-                                    <div>
-                                        <label for="phone" class="sr-only">Telefon</label>
-                                        <input type="text" name="phone" id="phone" autocomplete="tel" class="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm placeholder-gray-500 focus:border-sky-400 focus:ring-sky-400 disabled:bg-gray-200" x-mask="99 99 99 99" placeholder="Telefon" required x-model="data.phone" :disabled="success">
-                                    </div>
-                                    <div>
-                                        <label for="birthdate" class="sr-only">Fødselsår</label>
-                                        <input type="number" name="birthdate" id="birthdate" autocomplete="birthdate" class="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm placeholder-gray-500 focus:border-sky-400 focus:ring-sky-400 disabled:bg-gray-200" x-mask="9999" placeholder="Indtast dit fødselsår (fx. 2004)" x-model="data.birthdate" :disabled="success">
-                                    </div>
-                                    <div>
-                                        <button type="button" class="inline-flex justify-center rounded-md border border-transparent bg-lime-600 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors duration-100 hover:bg-lime-500 focus:outline-none focus:ring focus:ring-lime-600/50 active:bg-lime-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-lime-600" x-html="button" :disabled="loading ?? success">Send besked</button>
-
-                                        <p class="mt-5" :class="message ? 'block' : 'hidden'" x-text="message" x-cloak></p>
-                                    </div>
-                                </form>
-                                <script>
-                                    function form() {
-                                        return {
-                                            data: {
-                                                subject: "",
-                                                name: "",
-                                                email: "",
-                                                phone: "",
-                                                birthdate: "",
-                                                accessKey: "1a7f96e0-67a7-4fd9-b209-23da1ce50b8d",
-                                            },
-
-                                            button: "Send besked",
-                                            message: null,
-                                            loading: false,
-                                            success: false,
-                                            submit() {
-                                                this.button = "Sender din besked ..."
-                                                this.loading = false
-                                                fetch('https://api.staticforms.xyz/submit', {
-                                                    method: "POST",
-                                                    headers: {
-                                                        'Content-Type': "application/json",
-                                                    },
-                                                    body: JSON.stringify(this.data),
-                                                })
-                                                    .then(r => r.json())
-                                                    .then((data) => {
-                                                        this.success = data.success
-                                                        this.data.name = ""
-                                                        this.data.email = ""
-                                                        this.data.phone = ""
-                                                        this.data.birthdate = ""
-                                                        this.button = "Tak!"
-                                                        this.message = "Din besked er nu sendt, du hører fra os snarest."
-
-                                                        fathom.trackEvent('Campaign · Kontaktformular');
-                                                        snaptr('track', 'SIGN_UP', {'sign_up_method': 'Form', 'uuid_c1': this.uuid() })
-                                                        ttq.track('SubmitForm', {'contents': [{'content_name': 'SIGN_UP'}]}, {'event_id': this.uuid() })
-                                                    })
-                                                    .catch(() => {
-                                                        this.button = "Send besked"
-                                                        this.message = "Der gik noget galt, vi beklager – prøv igen."
-                                                    })
-                                                    .finally(() => {
-                                                        this.loading = false
-                                                        this.button = "Send besked";
-                                                    });
-                                            },
-
-                                            uuid() {
-                                                return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-                                                    (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
-                                                );
-                                            },
-                                        }
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <script>window.__lc = window.__lc || {};window.__lc.license = 12716457;window.__lc.integration_name = "manual_channels";window.__lc.product_name = "livechat";;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))</script>
 <noscript><a href="https://www.livechat.com/chat-with/12716457/" rel="nofollow">Chat med os</a></noscript>
 </body>
